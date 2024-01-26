@@ -1,9 +1,9 @@
--- The total number of customers
+-- Total number of customers
 -- Output: -- The result: top_10_total_income.csv
 SELECT COUNT(*) as customers_count from customers;
 
 
--- The 10 top-performing employees based on total income
+-- Top ten highest performing employees by total income
 -- Output: top_10_total_income.csv
 SELECT
     CONCAT(e.first_name, ' ', e.last_name) AS name,
@@ -17,7 +17,7 @@ ORDER BY income DESC
 LIMIT 10;
 
 
--- The employees whose individual average operation income is below the total average income
+-- Employees whose individual average operation income is below the overall average income
 -- Output: lowest_average_income.csv
 WITH
 	sale_incoms AS (
@@ -41,7 +41,7 @@ HAVING AVG(income) < total_average_income.average_income
 ORDER BY average_income;
 
 
--- The income grouped by days of week and employees
+-- Income grouped by days of the week and employees
 -- Output: day_of_the_week_income.csv
 WITH reformatted_sales AS (
     SELECT
@@ -59,3 +59,23 @@ SELECT
 	name, weekday, income
 FROM reformatted_sales
 ORDER BY weekday_id, name;
+
+
+-- Number of clients grouped by age category
+-- Output: age_groups.csv
+WITH customers_age_categories AS (
+    SELECT
+        CASE 
+            WHEN age BETWEEN 16 AND 25 THEN '16-25'
+            WHEN age BETWEEN 26 AND 40 THEN '26-40'
+            WHEN age > 40 THEN '40+'
+        END AS age_category
+    FROM customers
+)
+SELECT
+    age_category,
+    COUNT(*) AS count
+FROM customers_age_categories
+GROUP BY age_category
+ORDER BY
+    LEFT(age_category, 1);
