@@ -33,7 +33,7 @@ WITH
 	)
 SELECT
     sale_incoms.name,
-    FLOOR(AVG(income)) AS average_income
+    ROUND(AVG(income), 0) AS average_income
 FROM sale_incoms
 CROSS JOIN total_average_income
 GROUP BY sale_incoms.name, total_average_income.average_income
