@@ -54,8 +54,8 @@ WITH reformatted_sales AS (
     JOIN products p ON p.product_id = S.product_id
     GROUP by
     	CONCAT(e.first_name, ' ', e.last_name), weekday, weekday_id
-    ORDER BY weekday_id, name
 )
 SELECT
 	name, weekday, income
-FROM reformatted_sales;
+FROM reformatted_sales
+ORDER BY weekday_id, name;
