@@ -1,6 +1,6 @@
 -- The the total number of customers
 -- The output: -- The result: top_10_total_income.csv
-select COUNT(*) as customers_count from customers;
+SELECT COUNT(*) as customers_count from customers;
 
 
 -- The 10 top-performing employees based on total income
@@ -8,7 +8,7 @@ select COUNT(*) as customers_count from customers;
 SELECT
     CONCAT(e.first_name, ' ', e.last_name) AS name,
     COUNT(*) AS operations,
-    floor(SUM(s.quantity * p.price)) AS income
+    FLOOR(SUM(s.quantity * p.price)) AS income
 FROM sales s
 JOIN employees e ON e.employee_id = s.sales_person_id
 JOIN products p ON p.product_id = S.product_id
