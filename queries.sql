@@ -46,7 +46,7 @@ ORDER BY average_income;
 WITH reformatted_sales AS (
     SELECT
         CONCAT(e.first_name, ' ', e.last_name) AS name,
-        TO_CHAR(sale_date, 'FMday') AS weekday,
+        TO_CHAR(sale_date, 'day') AS weekday,
         TO_CHAR(sale_date, 'ID') AS weekday_id,
         ROUND(SUM(s.quantity * p.price), 0) AS income
     FROM sales s
