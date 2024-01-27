@@ -11,7 +11,7 @@ SELECT
     FLOOR(SUM(s.quantity * p.price)) AS income
 FROM sales s
 JOIN employees e ON e.employee_id = s.sales_person_id
-JOIN products p ON p.product_id = S.product_id
+JOIN products p ON p.product_id = s.product_id
 GROUP BY CONCAT(e.first_name, ' ', e.last_name)
 ORDER BY income DESC
 LIMIT 10;
@@ -61,7 +61,7 @@ FROM reformatted_sales
 ORDER BY weekday_id, name;
 
 
--- Number of clients grouped by age category
+-- Number of customers grouped by age category
 -- Output: age_groups.csv
 WITH customers_age_categories AS (
     SELECT
@@ -79,3 +79,14 @@ FROM customers_age_categories
 GROUP BY age_category
 ORDER BY
     LEFT(age_category, 1);
+
+
+-- Number of unique customers and total income per month
+-- Output: customers_by_month.csv
+SELECT
+    TO_CHAR(sale_date, 'YYYY-MM') AS date,
+    COUNT(DISTINCT customer_id) AS total_customers,
+    FLOOR(SUM(s.quantity * p.price)) AS income
+FROM sales s
+JOIN products p ON p.product_id = s.product_id
+GROUP BY date;
