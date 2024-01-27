@@ -99,10 +99,10 @@ SELECT
     DISTINCT ON (c.customer_id)
     CONCAT(c.first_name, ' ', c.last_name) AS customer,
     s.sale_date,
-    CONCAT(e.first_name, ' ', e.last_name) AS seller,
+    CONCAT(e.first_name, ' ', e.last_name) AS seller
 FROM sales s
 JOIN customers c ON c.customer_id = s.customer_id
 JOIN employees e ON e.employee_id = s.sales_person_id
 JOIN products p ON p.product_id = s.product_id
 WHERE p.price = 0
-ORDER BY c.customer_id;
+ORDER BY c.customer_id, s.sale_date;
