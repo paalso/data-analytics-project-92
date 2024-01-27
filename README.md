@@ -10,4 +10,4 @@ Analyse the data from a sales platform. Start with small tables and finish with 
 [Data in Google tables](data_analyst_l1_project_step1)
 
 DB Model
-
+![Sales DB structure](assets/db_structure.png)
