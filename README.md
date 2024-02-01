@@ -7,7 +7,10 @@
 #### TODO:
 Analyse the data from a sales platform. Start with small tables and finish with the whole database. Visualise the extracted data in Preset and make a final presentation with the results.
 
-[Data in Google tables](data_analyst_l1_project_step1)
+[Data in Google tables](https://docs.google.com/spreadsheets/d/1Ac2jD0MJTGBzBEO7vPuTziC6Fj1U_EfcHRCUm2AMD-4/edit?usp=sharing)
 
 ##### DB Model
 ![Sales DB structure](assets/db_structure.png)
+
+[Google presentation](https://docs.google.com/presentation/d/1bLDztSMMsOqXuZGg21TqFf1VVmpANIZqm4do8WVPTd8/edit?usp=sharing
+)
